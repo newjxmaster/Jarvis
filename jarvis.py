@@ -1,7 +1,9 @@
-# Import necessary libraries
 import speech_recognition as sr
 import openai
 from elevenlabs import generate, play
+
+openai.api_key = 'Your OpenAi Api Key Here'
+elevenLabsAPIKey = 'ElevenLabs Api Key Here'
 
 r = sr.Recognizer()
 mic = sr.Microphone()
@@ -10,8 +12,7 @@ conversation = [
     {"role": "system", "content": "Your name is Maat and your purpose is to be an Human like assistant"},
 ]
 
-assistant_name = "maat"
-activated = False
+assistant_name = "hey"
 
 while True:
     with mic as source:
@@ -32,10 +33,8 @@ while True:
         word = r.recognize_google(audio, language="en-US").lower()
 
         if assistant_name in word:
-            activated = True
             word = word.replace(assistant_name, '').strip()
 
-        if activated:
             conversation.append({"role": "user", "content": word})
             response = openai.ChatCompletion.create(
                 model="gpt-3.5-turbo",

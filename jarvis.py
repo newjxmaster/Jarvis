@@ -9,10 +9,10 @@ r = sr.Recognizer()
 mic = sr.Microphone()
 
 conversation = [
-    {"role": "system", "content": "Your name is Maat and your purpose is to be an Human like assistant"},
+    {"role": "system", "content": "Your name is Jarvis and your purpose is to be an Human like assistant"},
 ]
 
-assistant_name = "hey"
+assistant_name = "jarvis"
 
 while True:
     with mic as source:
